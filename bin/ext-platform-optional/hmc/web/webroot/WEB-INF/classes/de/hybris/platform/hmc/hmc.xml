@@ -4111,6 +4111,50 @@
 
 <!-- =================== end main hmc.xml=========================== -->
 
+<!-- =================== extension hmc.xml for cuppytrailhmc =========================== -->
+
+
+    <!--Configuration for extension cuppytrail-->
+    <explorertree>
+        <group name="cuppytrailgroup">
+            <typeref type="Stadium"/>
+        </group>
+    </explorertree>
+
+    <type name="Stadium" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="code"></condition>
+                <condition attribute="capacity"></condition>
+                <condition attribute="matches"></condition>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code"/>
+                        <attribute name="capacity"/>
+                        <attribute name="matches"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="code"/>
+                    </listlayout>
+                </essentials>
+                <tab name="tab.cuppytrail">
+                    <section name="section.cuppytrail">
+                        <listlayout>
+                            <attribute name="capacity"/>
+                            <attribute name="matches"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
 <!-- =================== extension hmc.xml for mediaconversion =========================== -->
 
                

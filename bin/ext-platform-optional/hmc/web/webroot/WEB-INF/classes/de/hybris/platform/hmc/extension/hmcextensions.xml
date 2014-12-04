@@ -14,6 +14,7 @@
 <extension class="de.hybris.platform.processing.hmc.ProcessingHMCExtension"/>
 <extension class="de.hybris.platform.validation.hmc.ValidationHMCExtension"/>
 <extension class="de.hybris.platform.commons.hmc.CommonsHMCExtension"/>
+<extension class="de.hybris.platform.cuppytrail.hmc.CuppytrailHMCExtension"/>
 <extension class="de.hybris.platform.mediaconversion.hmc.MediaConversionHMCExtension"/>
 <extension class="de.hybris.platform.platformhmc.hmc.PlatformHMCExtension"/>
 <extension class="de.hybris.platform.cuppy.hmc.CuppyHMCExtension"/>
