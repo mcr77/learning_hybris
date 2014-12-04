@@ -1,0 +1,8 @@
+#Ant properties
+#Thu Jul 24 14:41:54 CEST 2014
+builddate=20140724 1441
+description=hmc
+name=hmc
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Aug 14 09:40:33 CEST 2014
+builddate=20140814 0940
+description=commercewebservicescommons
+name=commercewebservicescommons
+releasedate=20140730 1849
+vendor=hybris
+version=5.3.0.0
+version.api=5.3.0

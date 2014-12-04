@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<edmx:Edmx Version="1.0"
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices
+		xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+		m:DataServiceVersion="2.0">
+		<Schema Namespace="sap.is.retail.car.int.odata.CARServices"
+			xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="MaterialQueryResultsType">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client" />
+				<Property Name="Material" Type="Edm.String" MaxLength="18"
+					sap:aggregation-role="dimension" sap:label="Material" />
+				<Property Name="MaterialName" Type="Edm.String" MaxLength="40"
+					sap:aggregation-role="dimension" sap:label="Material Name" />
+				<Property Name="BasicMaterial" Type="Edm.String" MaxLength="48"
+					sap:aggregation-role="dimension" sap:label="Basic Material" />
+				<Property Name="MaterialType" Type="Edm.String" MaxLength="4"
+					sap:aggregation-role="dimension" sap:label="Material Type" />
+				<Property Name="MaterialTypeName" Type="Edm.String"
+					MaxLength="25" sap:aggregation-role="dimension" sap:label="Material Type Description" />
+				<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9"
+					sap:aggregation-role="dimension" sap:label="Material Group" />
+				<Property Name="MaterialGroupName" Type="Edm.String"
+					MaxLength="20" sap:aggregation-role="dimension" sap:label="Material Group Name" />
+				<Property Name="MaterialCategory" Type="Edm.String"
+					MaxLength="2" sap:aggregation-role="dimension" sap:label="Material Category" />
+				<Property Name="MaterialCategoryName" Type="Edm.String"
+					MaxLength="60" sap:aggregation-role="dimension" sap:label="Material Category Name" />
+				<Property Name="Division" Type="Edm.String" MaxLength="2"
+					sap:aggregation-role="dimension" sap:label="Division" />
+				<Property Name="MaterialBaseUnit" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension" sap:label="Material Base Unit of Measure" />
+				<Property Name="UnitOfMeasure_E" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension"
+					sap:label="Unit Of Measure (Commercial Name)" />
+				<Property Name="UnitOfMeasureLongName" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Unit Of Measure - Long Name" />
+				<Property Name="MaterialIsMarkedForDeletion" Type="Edm.String"
+					MaxLength="1" sap:aggregation-role="dimension" sap:label="Material Marked for Deletion" />
+				<Property Name="MaterialGrossWeight" Type="Edm.Decimal"
+					Precision="13" Scale="3" sap:aggregation-role="dimension"
+					sap:label="Material Gross Weight" />
+				<Property Name="MaterialWeightUnit" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension" sap:label="Material Weight Unit" />
+				<Property Name="MaterialNetWeight" Type="Edm.Decimal"
+					Precision="13" Scale="3" sap:aggregation-role="dimension"
+					sap:label="Material Net Weight" />
+			</EntityType>
+			<EntityType Name="MaterialQueryType" sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.MaterialQuery_MaterialQueryResultsType"
+					FromRole="MaterialQueryPrincipal" ToRole="MaterialQueryResultsDependent" />
+			</EntityType>
+			<EntityType Name="MaterialInternationalArtlNmbrQueryResultsType">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client" />
+				<Property Name="Material" Type="Edm.String" MaxLength="18"
+					sap:aggregation-role="dimension" sap:label="Material Number " />
+				<Property Name="MaterialName" Type="Edm.String" MaxLength="40"
+					sap:aggregation-role="dimension" sap:label="Material Name" />
+				<Property Name="BaseUnit" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Unit of Measure for Display " />
+				<Property Name="UnitOfMeasure_E" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension"
+					sap:label="Unit Of Measure Commercial Name" />
+				<Property Name="UnitOfMeasureLongName" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Unit Of Measure Long Name" />
+				<Property Name="SequenceNumber" Type="Edm.String"
+					MaxLength="5" sap:aggregation-role="dimension" sap:label="Consecutive Number" />
+				<Property Name="InternationalArticleNumber" Type="Edm.String"
+					MaxLength="18" sap:aggregation-role="dimension"
+					sap:label="International Article Number (EAN/UPC)" />
+				<Property Name="InternationalArticleNumberCat" Type="Edm.String"
+					MaxLength="2" sap:aggregation-role="dimension"
+					sap:label="Category of International Article Number (EAN)" />
+				<Property Name="IsMainInternationalArticleNmbr" Type="Edm.String"
+					MaxLength="1" sap:aggregation-role="dimension" sap:label="Indicator: Main EAN" />
+			</EntityType>
+			<EntityType Name="MaterialInternationalArtlNmbrQueryType"
+				sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQuery_MaterialInternationalArtlNmbrQueryResultsType"
+					FromRole="MaterialInternationalArtlNmbrQueryPrincipal" ToRole="MaterialInternationalArtlNmbrQueryResultsDependent" />
+			</EntityType>
+			<EntityType Name="RetailLocationQueryResultsType">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client" />
+				<Property Name="AddressNumber" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="Address Number" />
+				<Property Name="HouseNumber" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="House Number" />
+				<Property Name="FirstTelephoneNumber" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Telephone Number 1" />
+				<Property Name="FirstFaxNumber" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Fax Number 1" />
+				<Property Name="Location" Type="Edm.String" MaxLength="4"
+					sap:aggregation-role="dimension" sap:label="Retail Location" />
+				<Property Name="LocationCustomerNmbr" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension"
+					sap:label="Retail Location Customer Number" />
+				<Property Name="LocationName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Retail Location Description Text" />
+				<Property Name="StreetName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Street Name" />
+				<Property Name="POBox" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="PO Box" />
+				<Property Name="PostalCode" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="Postal Code" />
+				<Property Name="CityName" Type="Edm.String" MaxLength="25"
+					sap:aggregation-role="dimension" sap:label="City Name" />
+				<Property Name="PurchasingOrganisation" Type="Edm.String"
+					MaxLength="4" sap:aggregation-role="dimension" sap:label="Purchasing Organization" />
+				<Property Name="SalesOrganization" Type="Edm.String"
+					MaxLength="4" sap:aggregation-role="dimension" sap:label="Sales Organization" />
+				<Property Name="Country" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Country" />
+				<Property Name="Region" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Region" />
+				<Property Name="DistributionChannel" Type="Edm.String"
+					MaxLength="2" sap:aggregation-role="dimension" sap:label="Distribution Channel" />
+			</EntityType>
+			<EntityType Name="RetailLocationQueryType" sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.RetailLocationQuery_RetailLocationQueryResultsType"
+					FromRole="RetailLocationQueryPrincipal" ToRole="RetailLocationQueryResultsDependent" />
+			</EntityType>
+			<EntityType Name="POSSalesQueryResultsType" sap:semantics="aggregate">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client" />
+				<Property Name="OrderChannel" Type="Edm.String" MaxLength="2"
+					sap:aggregation-role="dimension" sap:label="Order Channel" />
+				<Property Name="OrderChannelName" Type="Edm.String"
+					MaxLength="50" sap:aggregation-role="dimension" sap:label="Order Channel Name" />
+				<Property Name="Location" Type="Edm.String" MaxLength="4"
+					sap:aggregation-role="dimension" sap:label="Location" />
+				<Property Name="LocationCustomerNmbr" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension"
+					sap:label="Retail Location Customer Number" />
+				<Property Name="LocationName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Retail Location Description Text" />
+				<Property Name="Article" Type="Edm.String" MaxLength="18"
+					sap:aggregation-role="dimension" sap:label="Article" />
+				<Property Name="ArticleName" Type="Edm.String" MaxLength="40"
+					sap:aggregation-role="dimension" sap:label="Article Name" />
+				<Property Name="RetailStoreID" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="Retail Store ID" />
+				<Property Name="BusinessDayDate" Type="Edm.String"
+					MaxLength="8" sap:aggregation-role="dimension" sap:label="Business Day Date" />
+				<Property Name="OperatorID" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Operator ID" />
+				<Property Name="TransactionIndex" Type="Edm.Int32"
+					sap:aggregation-role="dimension" sap:label="Transaction Index" />
+				<Property Name="TransactionNumber" Type="Edm.String"
+					MaxLength="20" sap:aggregation-role="dimension" sap:label="Transaction Number" />
+				<Property Name="BeginTimestamp" Type="Edm.String"
+					MaxLength="14" sap:aggregation-role="dimension" sap:label="Begin Timestamp" />
+				<Property Name="TransactionCurrency" Type="Edm.String"
+					MaxLength="5" sap:aggregation-role="dimension" sap:label="Transaction Currency" />
+				<Property Name="CustomerNumber" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension" sap:label="Customer Number" />
+				<Property Name="SalesUnit" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Sales Unit" />
+				<Property Name="BaseUnit" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Base Unit" />
+				<Property Name="Promotion" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="Promotion" />
+				<Property Name="RetailPromotion" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension" sap:label="Retail Promotion" />
+				<Property Name="RetailPromotionName" Type="Edm.String"
+					MaxLength="40" sap:aggregation-role="dimension"
+					sap:label="Retail Promotion Description Text" />
+				<Property Name="RetailPromotionType" Type="Edm.String"
+					MaxLength="4" sap:aggregation-role="dimension" sap:label="Retail Promotion Type" />
+				<Property Name="RetailPromotionTypeName" Type="Edm.String"
+					MaxLength="20" sap:aggregation-role="dimension"
+					sap:label="Retail Promotion Type Description Text" />
+				<Property Name="EuropeanArticleNumber" Type="Edm.String"
+					MaxLength="18" sap:aggregation-role="dimension" sap:label="International Article Number" />
+				<Property Name="RetailItemCategory" Type="Edm.String"
+					MaxLength="1" sap:aggregation-role="dimension" sap:label="Retail Item Category" />
+				<Property Name="RetailItemSubcategory" Type="Edm.String"
+					MaxLength="1" sap:aggregation-role="dimension" sap:label="Retail Item Subcategory" />
+				<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9"
+					sap:aggregation-role="dimension" sap:label="Material Group" />
+				<Property Name="SalesAmount" Type="Edm.Decimal" Precision="34"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Sales Amount" />
+				<Property Name="SalesQuantityInBaseUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Sales Quantity in Base Unit" />
+				<Property Name="SalesQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Sales Quantity in Sales Unit" />
+				<Property Name="ItemDiscountsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Item Discounts Amount" />
+				<Property Name="TaxIncludedAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Tax Included Amount" />
+				<Property Name="TaxExcludedAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Tax Excluded Amount" />
+				<Property Name="DistributedDiscountsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Discounts Amount Distributed from Header" />
+				<Property Name="DistributedHeaderTaxAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Distributed Header Tax Amount" />
+				<Property Name="DistributedTaxIncludedAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Distributed Tax Included Amount" />
+				<Property Name="DistributedTaxExcludedAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Distributed Tax Excluded Amount" />
+				<Property Name="NumberOfSalesItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Number Of Sales Items" />
+				<Property Name="NumberOfReturnItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number Of Return Items" />
+				<Property Name="NumberOfDiscountItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number Of Discount Items" />
+				<Property Name="NumberOfPromotionItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number Of Promotion Items" />
+				<Property Name="NetSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Retail Net Sales Amount" />
+				<Property Name="RetailSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Retail Sales Amount" />
+				<Property Name="DiscountAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Discount Amount" />
+				<Property Name="TaxAmount" Type="Edm.Decimal" Precision="34"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Tax Amount" />
+				<Property Name="LineItemTaxAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Line Item Tax Amount" />
+				<Property Name="ReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Amount" />
+				<Property Name="NetReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Net Returns Amount" />
+				<Property Name="ReturnsQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Quantity in Sales Unit" />
+				<Property Name="ReturnsQuantityInBaseUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Quantity in Base Unit" />
+				<Property Name="ReturnsCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Cost Amount" />
+				<Property Name="ReturnsDiscountAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Discount Amount" />
+				<Property Name="DiscountedReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Discounted Returns Amount" />
+				<Property Name="PromotionSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Sales Amount" />
+				<Property Name="PromotionNetSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Net Sales Amount" />
+				<Property Name="PromotionQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Quantity In Sales Unit" />
+				<Property Name="MerchandiseSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Sales Amount" />
+				<Property Name="MerchandiseSalesCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Sales Cost Amount" />
+				<Property Name="MerchandiseReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Returns Amount" />
+				<Property Name="MerchandiseDiscountAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Discount Amount" />
+			</EntityType>
+			<EntityType Name="POSSalesQueryType" sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.POSSalesQuery_POSSalesQueryResultsType"
+					FromRole="POSSalesQueryPrincipal" ToRole="POSSalesQueryResultsDependent" />
+			</EntityType>
+			<EntityType Name="MultiChannelSalesQueryResultsType"
+				sap:semantics="aggregate">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client" />
+				<Property Name="OrderChannel" Type="Edm.String" MaxLength="2"
+					sap:aggregation-role="dimension" sap:label="Order Channel" />
+				<Property Name="OrderChannelName" Type="Edm.String"
+					MaxLength="50" sap:aggregation-role="dimension" sap:label="Order Channel Name" />
+				<Property Name="BaseUnit" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Base Unit" />
+				<Property Name="BaseUnitCommercialName" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension"
+					sap:label="Unit Of Measure Commercial Name" />
+				<Property Name="BaseUnitLongName" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Unit Of Measure Long Name" />
+				<Property Name="SalesUnit" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Sales Unit" />
+				<Property Name="SalesUnitCommercialName" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension"
+					sap:label="Unit Of Measure Commercial Name" />
+				<Property Name="SalesUnitLongName" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Unit Of Measure Long Name" />
+				<Property Name="Location" Type="Edm.String" MaxLength="4"
+					sap:aggregation-role="dimension" sap:label="Location " />
+				<Property Name="LocationCustomerNmbr" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension"
+					sap:label="Retail Location Customer Number" />
+				<Property Name="LocationName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Retail Location Description Text" />
+				<Property Name="Article" Type="Edm.String" MaxLength="18"
+					sap:aggregation-role="dimension" sap:label="Article" />
+				<Property Name="ArticleName" Type="Edm.String" MaxLength="40"
+					sap:aggregation-role="dimension" sap:label="Article Name" />
+				<Property Name="MaterialGroup" Type="Edm.String" MaxLength="9"
+					sap:aggregation-role="dimension" sap:label="Material Group" />
+				<Property Name="MaterialCategory" Type="Edm.String"
+					MaxLength="2" sap:aggregation-role="dimension" sap:label="Material Category" />
+				<Property Name="Division" Type="Edm.String" MaxLength="2"
+					sap:aggregation-role="dimension" sap:label="Division" />
+				<Property Name="BillingDocument" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension" sap:label="Billing Document" />
+				<Property Name="POSTransactionNumber" Type="Edm.String"
+					MaxLength="20" sap:aggregation-role="dimension" sap:label="POS Transaction Number" />
+				<Property Name="BillingDocumentDate" Type="Edm.String"
+					MaxLength="8" sap:aggregation-role="dimension" sap:label="Billing Document Date " />
+				<Property Name="EuropeanArticleNumber" Type="Edm.String"
+					MaxLength="18" sap:aggregation-role="dimension" sap:label="European Article Number " />
+				<Property Name="TransactionCurrency" Type="Edm.String"
+					MaxLength="5" sap:aggregation-role="dimension" sap:label="Document Currency " />
+				<Property Name="SalesQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Sales Quantity in Sales Unit" />
+				<Property Name="SalesQuantityInBaseUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Sales Quantity in Base Unit" />
+				<Property Name="NumberOfSalesItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Number of Sales Items" />
+				<Property Name="NumberOfReturnItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number of Return Items" />
+				<Property Name="RetailSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Retail Sales Amount" />
+				<Property Name="NetSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Retail Net Sales Amount" />
+				<Property Name="ReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Amount" />
+				<Property Name="NetReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Net Returns Amount" />
+				<Property Name="ReturnsQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Quantity in Sales Unit" />
+				<Property Name="ReturnsQuantityInBaseUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Returns Quantity in Base Unit" />
+				<Property Name="PromotionSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Sales Amount" />
+				<Property Name="PromotionNetSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Net Sales Amount" />
+				<Property Name="PromotionQuantityInSalesUnit" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Promotion Quantity in Sales Unit" />
+				<Property Name="NumberOfPromotionItems" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number of Promotion Items" />
+				<Property Name="TaxAmount_E" Type="Edm.Decimal" Precision="34"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Tax Amount" />
+				<Property Name="MerchandiseSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Sales Amount" />
+				<Property Name="MerchandiseDiscountAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Discount Amount" />
+				<Property Name="MerchandiseReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Merchandise Returns Amount" />
+				<Property Name="DiscountAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Discount Amount" />
+				<Property Name="DiscountReturnsAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Discount Returns Amount" />
+				<Property Name="NormalSalesAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Normal Sales Amount" />
+				<Property Name="NumberOfTransactions" Type="Edm.Int64"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Number of Transactions" />
+				<Property Name="POSCostAmount_E" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="POS Cost Amount" />
+				<Property Name="POSReturnsCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="POS Returns Cost Amount" />
+				<Property Name="POSMerchandiseSalesCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="POS Merchandise Sales Cost Amount" />
+				<Property Name="BillingDocumentCostAmount_E" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Billing Document Cost Amount" />
+				<Property Name="BillingDocumentReturnsCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Billing Document Returns Cost Amount" />
+				<Property Name="BillingDocumentMerchandiseCostAmount" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Billing Document Merchandise Cost Amount" />
+			</EntityType>
+			<EntityType Name="MultiChannelSalesQueryType"
+				sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQuery_MultiChannelSalesQueryResultsType"
+					FromRole="MultiChannelSalesQueryPrincipal" ToRole="MultiChannelSalesQueryResultsDependent" />
+			</EntityType>
+			<EntityType Name="InventoryVisibilityQueryResultsType"
+				sap:semantics="aggregate">
+				<Key>
+					<PropertyRef Name="GenID" />
+				</Key>
+				<Property Name="GenID" Type="Edm.String" Nullable="false"
+					MaxLength="2147483647" sap:filterable="false" />
+				<Property Name="SAPClient" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="SAP Client " />
+				<Property Name="Location" Type="Edm.String" MaxLength="4"
+					sap:aggregation-role="dimension" sap:label="Location" />
+				<Property Name="LocationName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Plant Name" />
+				<Property Name="LocationCustomerNmbr" Type="Edm.String"
+					MaxLength="10" sap:aggregation-role="dimension" sap:label="Plant Customer Number" />
+				<Property Name="StreetName" Type="Edm.String" MaxLength="30"
+					sap:aggregation-role="dimension" sap:label="Street Name" />
+				<Property Name="CityName" Type="Edm.String" MaxLength="25"
+					sap:aggregation-role="dimension" sap:label="City Name" />
+				<Property Name="PostalCode" Type="Edm.String" MaxLength="10"
+					sap:aggregation-role="dimension" sap:label="Postal Code" />
+				<Property Name="Region" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Region" />
+				<Property Name="Country" Type="Edm.String" MaxLength="3"
+					sap:aggregation-role="dimension" sap:label="Country" />
+				<Property Name="MaterialBaseUnit" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension" sap:label="Material Base Unit" />
+				<Property Name="UnitOfMeasureCommercialName" Type="Edm.String"
+					MaxLength="3" sap:aggregation-role="dimension"
+					sap:label="Unit Of Measure Commercial Name" />
+				<Property Name="UnitOfMeasureLongName" Type="Edm.String"
+					MaxLength="30" sap:aggregation-role="dimension" sap:label="Unit Of Measure Long Name" />
+				<Property Name="Article" Type="Edm.String" MaxLength="18"
+					sap:aggregation-role="dimension" sap:label="Article" />
+				<Property Name="ArticleName" Type="Edm.String" MaxLength="40"
+					sap:aggregation-role="dimension" sap:label="Article Name" />
+				<Property Name="UnresUseStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Unrestricted Use Stock Quantity" />
+				<Property Name="InTransitStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="In-Transit Stock Quantity" />
+				<Property Name="InTransferStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="In-Transfer Stock Quantity" />
+				<Property Name="TotalVltdStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Total Valuated Stock Quantity" />
+				<Property Name="TotVltdStockValueInCoCodeCrcy" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Total Valuated at Cost Stock Value" />
+				<Property Name="TotStkValAtSlsPrInCoCodeCrcy" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Total Valuated at Retail Stock Value" />
+				<Property Name="ArticleSafetyStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Article Safety Stock Quantity" />
+				<Property Name="ArticleMaxStockLevelQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Article Maximum Stock Level Quantity" />
+				<Property Name="ArticleMinSftyStockQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Article Minimum Safety Stock Quantity" />
+				<Property Name="CostPerStockUnit" Type="Edm.Double"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Cost per Stock Unit" />
+				<Property Name="SalesValuePerStockUnit" Type="Edm.Double"
+					sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Sales Value per Stock Unit" />
+				<Property Name="CurrentStock" Type="Edm.Decimal" Precision="34"
+					sap:filterable="false" sap:aggregation-role="measure" sap:label="Current Stock" />
+				<Property Name="UnprocessedSalesQuantity" Type="Edm.Decimal"
+					Precision="34" sap:filterable="false" sap:aggregation-role="measure"
+					sap:label="Unprocessed Sales Quantity" />
+			</EntityType>
+			<EntityType Name="InventoryVisibilityQueryType"
+				sap:semantics="parameters">
+				<Key>
+					<PropertyRef Name="P_SAPClient" />
+				</Key>
+				<Property Name="P_SAPClient" Type="Edm.String" Nullable="false"
+					MaxLength="3" sap:label="P_SAPClient" sap:parameter="mandatory" />
+				<NavigationProperty Name="Results"
+					Relationship="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQuery_InventoryVisibilityQueryResultsType"
+					FromRole="InventoryVisibilityQueryPrincipal" ToRole="InventoryVisibilityQueryResultsDependent" />
+			</EntityType>
+			<Association Name="MaterialQuery_MaterialQueryResultsType">
+				<End Type="sap.is.retail.car.int.odata.CARServices.MaterialQueryType"
+					Role="MaterialQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.MaterialQueryResultsType"
+					Role="MaterialQueryResultsDependent" Multiplicity="*" />
+			</Association>
+			<Association
+				Name="MaterialInternationalArtlNmbrQuery_MaterialInternationalArtlNmbrQueryResultsType">
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQueryType"
+					Role="MaterialInternationalArtlNmbrQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQueryResultsType"
+					Role="MaterialInternationalArtlNmbrQueryResultsDependent"
+					Multiplicity="*" />
+			</Association>
+			<Association Name="RetailLocationQuery_RetailLocationQueryResultsType">
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.RetailLocationQueryType"
+					Role="RetailLocationQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.RetailLocationQueryResultsType"
+					Role="RetailLocationQueryResultsDependent" Multiplicity="*" />
+			</Association>
+			<Association Name="POSSalesQuery_POSSalesQueryResultsType">
+				<End Type="sap.is.retail.car.int.odata.CARServices.POSSalesQueryType"
+					Role="POSSalesQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.POSSalesQueryResultsType"
+					Role="POSSalesQueryResultsDependent" Multiplicity="*" />
+			</Association>
+			<Association
+				Name="MultiChannelSalesQuery_MultiChannelSalesQueryResultsType">
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQueryType"
+					Role="MultiChannelSalesQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQueryResultsType"
+					Role="MultiChannelSalesQueryResultsDependent" Multiplicity="*" />
+			</Association>
+			<Association
+				Name="InventoryVisibilityQuery_InventoryVisibilityQueryResultsType">
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQueryType"
+					Role="InventoryVisibilityQueryPrincipal" Multiplicity="*" />
+				<End
+					Type="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQueryResultsType"
+					Role="InventoryVisibilityQueryResultsDependent" Multiplicity="*" />
+			</Association>
+			<EntityContainer Name="CARServices"
+				m:IsDefaultEntityContainer="true">
+				<EntitySet Name="MaterialQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MaterialQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="MaterialQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MaterialQueryType"
+					sap:addressable="false" />
+				<EntitySet Name="MaterialInternationalArtlNmbrQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="MaterialInternationalArtlNmbrQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQueryType"
+					sap:addressable="false" />
+				<EntitySet Name="RetailLocationQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.RetailLocationQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="RetailLocationQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.RetailLocationQueryType"
+					sap:addressable="false" />
+				<EntitySet Name="POSSalesQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.POSSalesQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="POSSalesQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.POSSalesQueryType"
+					sap:addressable="false" />
+				<EntitySet Name="MultiChannelSalesQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="MultiChannelSalesQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQueryType"
+					sap:addressable="false" />
+				<EntitySet Name="InventoryVisibilityQueryResults"
+					EntityType="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQueryResultsType"
+					sap:addressable="false" />
+				<EntitySet Name="InventoryVisibilityQuery"
+					EntityType="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQueryType"
+					sap:addressable="false" />
+				<AssociationSet Name="MaterialQuery_MaterialQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.MaterialQuery_MaterialQueryResultsType">
+					<End Role="MaterialQueryPrincipal" EntitySet="MaterialQuery" />
+					<End Role="MaterialQueryResultsDependent" EntitySet="MaterialQueryResults" />
+				</AssociationSet>
+				<AssociationSet
+					Name="MaterialInternationalArtlNmbrQuery_MaterialInternationalArtlNmbrQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.MaterialInternationalArtlNmbrQuery_MaterialInternationalArtlNmbrQueryResultsType">
+					<End Role="MaterialInternationalArtlNmbrQueryPrincipal"
+						EntitySet="MaterialInternationalArtlNmbrQuery" />
+					<End Role="MaterialInternationalArtlNmbrQueryResultsDependent"
+						EntitySet="MaterialInternationalArtlNmbrQueryResults" />
+				</AssociationSet>
+				<AssociationSet Name="RetailLocationQuery_RetailLocationQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.RetailLocationQuery_RetailLocationQueryResultsType">
+					<End Role="RetailLocationQueryPrincipal" EntitySet="RetailLocationQuery" />
+					<End Role="RetailLocationQueryResultsDependent" EntitySet="RetailLocationQueryResults" />
+				</AssociationSet>
+				<AssociationSet Name="POSSalesQuery_POSSalesQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.POSSalesQuery_POSSalesQueryResultsType">
+					<End Role="POSSalesQueryPrincipal" EntitySet="POSSalesQuery" />
+					<End Role="POSSalesQueryResultsDependent" EntitySet="POSSalesQueryResults" />
+				</AssociationSet>
+				<AssociationSet
+					Name="MultiChannelSalesQuery_MultiChannelSalesQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.MultiChannelSalesQuery_MultiChannelSalesQueryResultsType">
+					<End Role="MultiChannelSalesQueryPrincipal" EntitySet="MultiChannelSalesQuery" />
+					<End Role="MultiChannelSalesQueryResultsDependent" EntitySet="MultiChannelSalesQueryResults" />
+				</AssociationSet>
+				<AssociationSet
+					Name="InventoryVisibilityQuery_InventoryVisibilityQueryResults"
+					Association="sap.is.retail.car.int.odata.CARServices.InventoryVisibilityQuery_InventoryVisibilityQueryResultsType">
+					<End Role="InventoryVisibilityQueryPrincipal" EntitySet="InventoryVisibilityQuery" />
+					<End Role="InventoryVisibilityQueryResultsDependent" EntitySet="InventoryVisibilityQueryResults" />
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

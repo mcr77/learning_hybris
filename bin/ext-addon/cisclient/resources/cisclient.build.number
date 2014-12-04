@@ -1,0 +1,9 @@
+#Ant properties
+#Tue Jul 22 21:49:19 CEST 2014
+builddate=20140722 2149
+description=cisclient
+name=cisclient
+releasedate=20140708 1401
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

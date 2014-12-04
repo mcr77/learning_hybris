@@ -1,0 +1,71 @@
+*** Settings ***
+Library    		de.hybris.platform.atddimpex.keywords.ImpexKeywordLibrary
+Resource		impex/Impex_Keywords.txt
+Resource		commerce/SubscriptionCommerce_Keywords.txt
+
+*** Keywords ***
+    
+for product "${productCode}" add non metered entitlement "${entitlementId}"
+    [Documentation]    Adds a non metered entitlement to the given product
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/nonmeteredsubscriptionentitlement-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}"
+    reset impex legacy mode
+
+expect "${exceptionType}" for product "${productCode}" add non metered entitlement "${entitlementId}"
+    [Documentation]    Adds a non metered entitlement to the given product and expects an exception of the given type
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/nonmeteredsubscriptionentitlement-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}" and expect "${exceptionType}" 
+    reset impex legacy mode
+    
+for product "${productCode}" add metered entitlement "${entitlementId}" with quantity "${quantity}"
+    [Documentation]    Adds a metered entitlement to the given product
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}    quantity    ${quantity} 
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/meteredsubscriptionentitlement-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}"
+    reset impex legacy mode
+    
+expect "${exceptionType}" for product "${productCode}" add metered entitlement "${entitlementId}" with quantity "${quantity}"
+    [Documentation]    Adds a metered entitlement to the given product and expects an exception of the given type
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}    quantity    ${quantity} 
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/meteredsubscriptionentitlement-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}" and expect "${exceptionType}" 
+    reset impex legacy mode
+    
+for product "${productCode}" verify that the XML for entitlements matches "${expectedXml}"
+	[Documentation]   Verifies that XML for supscription term matches the expected XML 
+    for product "${productCode}" verify that "product/entitlements" evaluates to "${expectedXml}"
+    
+for product "${productCode}" add meteredsubscriptionentitlement "${entitlementId}" with quantity "${quantity}" and timeunit values timeunit "${timeUnit}" timeunitstart "${timeUnitStart}" timeunitduration "${timeUnitDuration}"
+    [Documentation]    Adds timeunit values to a given entitlement
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}    quantity    ${quantity}    timeUnit    ${timeUnit}    timeUnitStart    ${timeUnitStart}    timeUnitDuration    ${timeUnitDuration} 
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/meteredsubscriptionentitlement_timeunit-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}" 
+    reset impex legacy mode
+
+for product "${productCode}" add nonmeteredsubscriptionentitlement "${entitlementId}" and timeunit values timeunit "${timeUnit}" timeunitstart "${timeUnitStart}" timeunitduration "${timeUnitDuration}"
+    [Documentation]    Adds timeunit values to a given entitlement
+    @{binding}    create list    productCode    ${productCode}    entitlementId    ${entitlementId}    timeUnit    ${timeUnit}    timeUnitStart    ${timeUnitStart}    timeUnitDuration    ${timeUnitDuration} 
+    ${templateName}=    Set Variable    impex-templates/subscription-entitlement/nonmeteredsubscriptionentitlement_timeunit-insert.impex.vm
+    ${impEx}=    generate impex from template    ${templateName}    @{binding}
+    ${legacyMode}=    Set Variable    false
+    set impex legacy mode    ${legacyMode}
+    import impex "${impEx}" use template "${templateName}" 
+    reset impex legacy mode
+    

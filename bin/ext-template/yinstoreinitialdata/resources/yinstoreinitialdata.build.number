@@ -1,0 +1,9 @@
+#Ant properties
+#Mon Oct 06 08:03:51 CEST 2014
+builddate=20141006 0803
+description=yinstoreinitialdata
+name=yinstoreinitialdata
+releasedate=20140708 1401
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

@@ -1,0 +1,15 @@
+<artifact-resolution>
+  <data>
+    <presentLocally>true</presentLocally>
+    <groupId>com.sap.custdev.projects.fbs.slc</groupId>
+    <artifactId>com.sap.custdev.projects.fbs.slc.engine</artifactId>
+    <version>1.5.1-20141016.134147-7528</version>
+    <baseVersion>1.5.1-SNAPSHOT</baseVersion>
+    <extension>jar</extension>
+    <snapshot>true</snapshot>
+    <snapshotBuildNumber>7528</snapshotBuildNumber>
+    <snapshotTimeStamp>1413466907000</snapshotTimeStamp>
+    <sha1>d56e68c8dda7ca77e9f6af33b1a4acaa393813fd</sha1>
+    <repositoryPath>/com/sap/custdev/projects/fbs/slc/com.sap.custdev.projects.fbs.slc.engine/1.5.1-SNAPSHOT/com.sap.custdev.projects.fbs.slc.engine-1.5.1-20141016.134147-7528.jar</repositoryPath>
+  </data>
+</artifact-resolution>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-backoffice/backoffice/backoffice.iml" filepath="$PROJECT_DIR$/bin/ext-backoffice/backoffice/backoffice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-cockpit/cockpit/cockpit.iml" filepath="$PROJECT_DIR$/bin/ext-cockpit/cockpit/cockpit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/custom/cuppy/cuppy.iml" filepath="$PROJECT_DIR$/bin/custom/cuppy/cuppy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/custom/cuppytrail/cuppytrail.iml" filepath="$PROJECT_DIR$/bin/custom/cuppytrail/cuppytrail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/custom/cuppytrailhmc/cuppytrailhmc.iml" filepath="$PROJECT_DIR$/bin/custom/cuppytrailhmc/cuppytrailhmc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/hmc/hmc.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/hmc/hmc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/ldap/ldap.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/ldap/ldap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/lucenesearch/lucenesearch.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/lucenesearch/lucenesearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/lucenesearchhmc/lucenesearchhmc.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/lucenesearchhmc/lucenesearchhmc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-cockpit/mcc/mcc.iml" filepath="$PROJECT_DIR$/bin/ext-cockpit/mcc/mcc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/platform/platform.iml" filepath="$PROJECT_DIR$/bin/platform/platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/platformhmc/platformhmc.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/platformhmc/platformhmc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-cockpit/reportcockpit/reportcockpit.iml" filepath="$PROJECT_DIR$/bin/ext-cockpit/reportcockpit/reportcockpit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bin/ext-platform-optional/virtualjdbc/virtualjdbc.iml" filepath="$PROJECT_DIR$/bin/ext-platform-optional/virtualjdbc/virtualjdbc.iml" />
+    </modules>
+  </component>
+</project>

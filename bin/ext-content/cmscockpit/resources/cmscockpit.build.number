@@ -1,0 +1,9 @@
+#Ant properties
+#Sat Aug 09 00:18:34 CEST 2014
+builddate=20140809 0018
+description=cmscockpit
+name=cmscockpit
+releasedate=20140718 0732
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

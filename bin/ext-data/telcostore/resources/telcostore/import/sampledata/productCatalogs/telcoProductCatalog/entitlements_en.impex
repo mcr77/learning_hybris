@@ -1,0 +1,21 @@
+# ImpEx for Entitlements - English
+
+# Macros / Replacement Parameter definitions
+$productCatalog=telcoProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
+$lang=en
+
+
+# Subscription pricing
+UPDATE UsageUnit;id[unique=true];name[lang=$lang];namePlural[lang=$lang]
+;phone_minutes;minute;minutes
+;sms;text message;text messages
+;mobile_data;MB;MBs
+
+UPDATE NonMeteredEntitlement;id[unique=true];name[lang=$lang]
+;NME_UNLIMITED_TEXT_MESSAGES;unlimited text messages
+
+UPDATE MeteredEntitlement;id[unique=true];name[lang=$lang]
+;ME_PHONE_MIN;Included phone minutes
+;ME_SMS_TEXTS;Included SMS texts
+;ME_DATA_MB;Included data

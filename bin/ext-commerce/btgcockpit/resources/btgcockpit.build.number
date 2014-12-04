@@ -1,0 +1,9 @@
+#Ant properties
+#Tue Aug 12 13:43:09 CEST 2014
+builddate=20140812 1343
+description=btgcockpit
+name=btgcockpit
+releasedate=20140730 1849
+vendor=hybris
+version=5.3.0.0
+version.api=5.3.0

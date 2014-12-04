@@ -1,0 +1,94 @@
+*** Settings ***
+Test Setup        import commercecart sampledata
+Test Teardown     reset system
+Resource          commerce/CommerceServices_Keywords.txt
+Resource		  commerce/SubscriptionCommerce_Keywords.txt
+Resource          subscriptionservices/SubscriptionProduct_Keywords.txt
+Resource          subscriptionservices/SubscriptionPricePlan_Keywords.txt
+Resource          subscriptionservices/SubscriptionEntitlement_Keywords.txt
+
+
+*** Test Cases ***
+Test_XML_Verification_Entitlement_Meteredx1
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement></entitlements>"	
+
+Test_XML_Verification_Entitlement_Meteredx2
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add metered entitlement "ME2" with quantity "11"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement><meteredEntitlement><name>Metered Entitlement 2</name><usageUnit><id>textMessage</id><namePlural>Text Message</namePlural><name>Text Message</name><accumulative>false</accumulative></usageUnit><quantity>11</quantity></meteredEntitlement></entitlements>"
+	
+Test_XML_Verification_Entitlement_NonMeteredx1
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches " <entitlements><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement></entitlements>"
+	
+Test_XML_Verification_Entitlement_NonMeteredx2
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add non metered entitlement "NME2"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 2</name></nonMeteredEntitlement></entitlements>"
+	
+Test_XML_Verification_Entitlement_Meteredx1_NonMeteredx1
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement></entitlements>"
+	
+Test_XML_Verification_Entitlement_Meteredx2_NonMeteredx1
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add metered entitlement "ME2" with quantity "11"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches " <entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement><meteredEntitlement><name>Metered Entitlement 2</name><usageUnit><id>textMessage</id><namePlural>Text Message</namePlural><name>Text Message</name><accumulative>false</accumulative></usageUnit><quantity>11</quantity></meteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement></entitlements>"	
+	
+Test_XML_Verification_Entitlement_Meteredx1_NonMeteredx2
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add non metered entitlement "NME2"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 2</name></nonMeteredEntitlement></entitlements>"			
+	
+Test_XML_Verification_Entitlement_Meteredx2_NonMeteredx2
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add metered entitlement "ME1" with quantity "10"
+    for product "P1" add metered entitlement "ME2" with quantity "11"
+    for product "P1" add non metered entitlement "NME1"
+    for product "P1" add non metered entitlement "NME2"
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><name>Metered Entitlement 1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>10</quantity></meteredEntitlement><meteredEntitlement><name>Metered Entitlement 2</name><usageUnit><id>textMessage</id><namePlural>Text Message</namePlural><name>Text Message</name><accumulative>false</accumulative></usageUnit><quantity>11</quantity></meteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 1</name></nonMeteredEntitlement><nonMeteredEntitlement><name>Non-Metered Entitlement 2</name></nonMeteredEntitlement></entitlements>"								
+
+Test_XML_Verification_Entitlement_Meteredx2_TimeUnits
+    [Documentation]   Verifies addition of a metered entitlement
+    create subscription product "P1"
+    for product "P1" add meteredsubscriptionentitlement "METU1" with quantity "100" and timeunit values timeunit "cycle" timeunitstart "1" timeunitduration "2" 
+    for product "P1" add meteredsubscriptionentitlement "METU2" with quantity "200" and timeunit values timeunit "cycle" timeunitstart "3" timeunitduration ""
+    for product "P1" add subscription priceplan "PP1" with currency "USD"
+    add product "P1" to cart
+	for product "P1" verify that the XML for entitlements matches "<entitlements><meteredEntitlement><timeUnitDuration>2</timeUnitDuration><timeUnitStart>1</timeUnitStart><timeUnit>CYCLE</timeUnit><name>Metered Entitlement TimeUnits1</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>100</quantity></meteredEntitlement><meteredEntitlement><timeUnitStart>3</timeUnitStart><timeUnit>CYCLE</timeUnit><name>Metered Entitlement TimeUnits2</name><usageUnit><id>minute</id><namePlural>Minutes</namePlural><name>Minute</name><accumulative>false</accumulative></usageUnit><quantity>200</quantity></meteredEntitlement></entitlements>"
+	

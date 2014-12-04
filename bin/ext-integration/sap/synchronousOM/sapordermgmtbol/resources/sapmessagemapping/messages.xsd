@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.sap.com/rfcmessages/"
+	xmlns:wec="com.sap.wec.core.config" targetNamespace="http://www.sap.com/rfcmessages/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="com.sap.wec.core.config" schemaLocation="weccommon.xsd" />
+
+	<element name="messages" type="tns:messagesType" />
+	<element name="message" type="tns:messageType" />
+
+	<complexType name="messagesType">
+		<sequence>
+			<element name="global_config" type="tns:globalConfigType"
+				minOccurs="1" maxOccurs="1" />
+
+			<element ref="wec:ifValue" minOccurs="0" maxOccurs="unbounded">
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="globalConfigType">
+		<attribute name="hide_non_error_messages" type="boolean"
+			use="required" />
+	</complexType>
+
+	<complexType name="messageType">
+		<sequence>
+			<element name="source" type="tns:messageSourceType"
+				minOccurs="1" maxOccurs="1" />
+			<element name="destination" type="tns:messageDestinationType"
+				minOccurs="0" maxOccurs="1" />
+			<element name="hide" minOccurs="0" maxOccurs="1" />
+			
+		</sequence>
+	</complexType>
+
+	<complexType name="messageSourceType">
+		<attribute name="id" type="string" use="required"></attribute>
+		<attribute name="number" type="string" use="optional"></attribute>
+		<attribute name="type" type="tns:msgType" use="optional"></attribute>
+		<attribute name="msgV1" type="string" use="optional"></attribute>
+		<attribute name="msgV2" type="string" use="optional"></attribute>
+		<attribute name="msgV3" type="string" use="optional"></attribute>
+		<attribute name="msgV4" type="string" use="optional"></attribute>
+	</complexType>
+	
+	<complexType name="messageDestinationType">
+		<attribute name="type" type="tns:msgType" use="optional"></attribute>
+		<attribute name="resource_key" type="string" use="optional"></attribute>
+		<attribute name="process_step" type="tns:processStepType" use="optional"></attribute>
+		<attribute name="callbackId" type="string" use="optional"></attribute>
+	</complexType>
+
+	<simpleType name="msgType">
+		<restriction base="token">
+			<enumeration value="W" />
+			<enumeration value="S" />
+			<enumeration value="E" />
+			<enumeration value="I" />
+			<enumeration value="A" />
+			<enumeration value="*" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="processStepType">
+		<restriction base="token">
+			<enumeration value="CH" />
+		</restriction>
+	</simpleType>
+</schema>

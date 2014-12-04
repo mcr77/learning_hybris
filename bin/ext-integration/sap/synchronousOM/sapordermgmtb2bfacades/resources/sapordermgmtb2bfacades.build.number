@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Oct 23 13:44:45 CEST 2014
+builddate=20141023 1344
+description=sapordermgmtb2bfacades
+name=sapordermgmtb2bfacades
+releasedate=20140929 1603
+vendor=hybris
+version=5.3.0.0
+version.api=5.3.0

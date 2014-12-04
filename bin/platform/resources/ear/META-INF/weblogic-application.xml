@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-application xmlns="http://www.bea.com/ns/weblogic/90">
+	<application-param>
+		<param-name>webapp.encoding.default</param-name>
+		<param-value>UTF-8</param-value>
+	</application-param>
+	<xml>
+		<parser-factory>
+			<saxparser-factory>org.apache.xerces.jaxp.SAXParserFactoryImpl</saxparser-factory>
+			<document-builder-factory>org.apache.xerces.jaxp.DocumentBuilderFactoryImpl</document-builder-factory>
+			<transformer-factory>org.apache.xalan.processor.TransformerFactoryImpl</transformer-factory>
+		</parser-factory>
+	</xml>
+	<classloader-structure> 
+		 @weblogic.classloader-structure@
+	</classloader-structure>	
+	
+	<prefer-application-packages>
+	
+		<!-- there are known issues with mysql-connector 5.0.3 which is bundled with BEA 10.0, 
+		     we are preferring our bundled database driver version -->
+	
+		<package-name>com.mysql.*</package-name>
+		<package-name>org.gjt.mm.mysql.*</package-name>
+		<package-name>org.hsqldb.*</package-name>
+		<package-name>net.sourceforge.jtds.*</package-name>
+		
+		<package-name>org.apache.commons.lang.*</package-name>
+		<package-name>javax.jws.*</package-name>
+		<!--<package-name>javax.xml.bind.*</package-name>
+		<package-name>javax.namespace.xml.*</package-name>
+		<package-name>javax.xml.soap.*</package-name>	-->
+		
+	<!-- see PLA-11152: apache commons pool version of weblogic 7 is too old, 
+			 we like to use our own shipped version instead -->
+		<package-name>org.apache.commons.pool.*</package-name>
+
+	<!-- see PLA-PLA-11156: joda-time version of weblogic 7 is too old, 
+			 we like to use our own shipped version instead -->
+	
+		<package-name>org.joda.time.*</package-name>
+		
+	</prefer-application-packages>
+
+
+
+
+
+
+</weblogic-application>
+

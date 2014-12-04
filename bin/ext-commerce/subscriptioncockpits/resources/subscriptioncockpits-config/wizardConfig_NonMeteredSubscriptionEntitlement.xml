@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wizard-config showPrefilledValues="false" selectMode="true" createMode="true" createWithinPopup="false" createWithinEditor="false">
+	<displayed-properties>
+		<group qualifier="Essentials" visible="true" initially-opened="true">
+			<label key="config.general.mandatorydata" />
+			<property qualifier="NonMeteredSubscriptionEntitlement.entitlement" editorCode="shortListEditor" >
+				<parameter name="allowCreate" value="false"/>
+				<parameter name="allowSelect" value="true"/>
+			</property>
+			<property qualifier="SubscriptionEntitlement.timeUnit"/>
+			<property qualifier="SubscriptionEntitlement.timeUnitStart"/>
+			<property qualifier="SubscriptionEntitlement.timeUnitDuration"/>
+		</group>
+	</displayed-properties>
+</wizard-config>

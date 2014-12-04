@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/hmc/bin/lucenesearchhmchmc.jar!/" />
+    <libelement value="file://$MODULE_DIR$/resources" />
+    <src_description expected_position="0" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/eclipsebin/notused" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="module" module-name="platform" />
+    <orderEntry type="module" module-name="hmc" exported="" />
+    <orderEntry type="module" module-name="lucenesearch" exported="" />
+    <orderEntry type="module-library" exported="">
+      <library name="lucenesearchhmchmc.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/hmc/bin/lucenesearchhmchmc.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="https://download.hybris.com/api/5.2.0" />
+        </JAVADOC>
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="resources">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/resources" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

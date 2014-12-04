@@ -1,0 +1,36 @@
+# ImpEx for Promotions for Electronics Store
+
+# Language
+$lang=ja
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+# Load the storefront context root config param
+$storefrontContextRoot=$config-storefrontContextRoot
+
+
+
+UPDATE ProductPercentageDiscountPromotion;code[unique=true];enabled[default=true][unique=true];messageFired[lang=$lang];name[lang=$lang];
+ ;10DiscountCanonEOS450D;;10％の割引を受信しました。<br>をあなたがこの項目で{2}を保存しました。;;
+
+
+
+UPDATE AcceleratorProductMultiBuyPromotion;code[unique=true];enabled[default=true][unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];name[lang=$lang];
+ ;MultiBuyElectronics;;{0,number,integer} フィルムを {2} で買って - 資格を得るのに {3,number,integer} を追加;{0,number,integer} を{2} で買えば、{4} の節約;;
+
+
+
+UPDATE AcceleratorProductBOGOFPromotion;code[unique=true];enabled[default=true][unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];name[lang=$lang];
+ ;BOGOFElectronics;;{0,choice,1#複数の項目|1<別の {0,number,integer} 項目} を購入し、当ショップの{1,number,integer} を買って {2,number,integer} をゲットの無料提供が得られる資格を手に入れよう;このカードは当ショップの {0,number,integer} を買って {1,number,integer} をゲットの無料提供が得られる資格になります - {3} の節約;;
+
+
+
+UPDATE ProductPerfectPartnerPromotion;code[unique=true];enabled[default=true][unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];name[lang=$lang];
+ ;PerfectPartnerElectronics;;DSLR-A100H を買って、ソニーのバッテリーを{1} でゲット;DSLR-A100H を買って、ソニーのバッテリーを {1} でゲット - {3} の節約です;;
+
+
+
+UPDATE ProductBundlePromotion;code[unique=true];enabled[default=true][unique=true];messageCouldHaveFired[lang=$lang];messageFired[lang=$lang];name[lang=$lang];
+ ;ProductBundleElectronics;;当ショップで {0,choice,1#複数の項目|1<別の {0,number,integer} 項目} を買おう<a href='$storefrontContextRoot/Cameras/Hand-held-Camcorders/HDR-CX105E-Red/p/1934406' class='promotion_link'><b>SONY HDR Red</b></a> のパッケージ特売で<a href='$storefrontContextRoot/Components/Power-Supplies/Battery-Chargers/AC-VQP10-CHARGER/p/278688' class='promotion_link'><b>充電器</b></a>と<a href='$storefrontContextRoot/Cameras/Camera-Accessories-Supplies/Tripods/Remote-Control-Tripod-VCT-80AV/p/1687508' class='promotion_link'><b>三脚</b></a> もあわせてたった {2}！;ビデオカメラの特売セットを {1} で手に入れ、 {3} の節約！;;
+

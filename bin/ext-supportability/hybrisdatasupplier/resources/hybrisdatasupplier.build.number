@@ -1,0 +1,9 @@
+#Ant properties
+#Wed Jul 23 09:55:48 CEST 2014
+builddate=20140723 0955
+description=hybrisdatasupplier
+name=hybrisdatasupplier
+releasedate=20140718 0732
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

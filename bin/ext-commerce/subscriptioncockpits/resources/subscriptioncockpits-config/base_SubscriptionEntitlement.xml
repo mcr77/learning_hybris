@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base>
+	<initial-properties source-object-template="SubscriptionProduct">
+		<property-mapping source="src.catalogVersion" target="SubscriptionEntitlement.catalogVersion"/>
+	</initial-properties>
+	
+</base>

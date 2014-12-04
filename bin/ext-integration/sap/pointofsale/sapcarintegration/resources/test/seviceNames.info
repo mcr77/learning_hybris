@@ -1,0 +1,26 @@
+--- query header sales order : customer id : 1000
+
+
+--- query item sales order : BusinessDayDate: "20120101", RetailStoreID: "R100", TransactionIndex: 2
+http://ldcird1.wdf.sap.corp:8002/sap/is/retail/car/int/odata/CARServices.xsodata/POSSalesQuery(P_SAPClient='800')/Results?$format=json&$filter=TransactionNumber eq '98375565623032364157'&$top=10
+
+// TransactionNumber eq 98375565623032364157
+http://ldcird1.wdf.sap.corp:8002/sap/is/retail/car/int/odata/CARServices.xsodata/POSSalesQuery(P_SAPClient='800')/Results?$format=json&$filter=RetailStoreID%20eq%20%27R100%27%20and%20TransactionIndex%20eq%202%20and%20BusinessDayDate%20eq%20%2720120101%27&$top=1
+
+-- query location sales order store id : R100
+http://ldcird1.wdf.sap.corp:8002/sap/is/retail/car/int/odata/CARServices.xsodata/RetailLocationQuery(P_SAPClient='800')/Results?$select=HouseNumber,Location,StreetName,POBox,PostalCode,CityName,Country&$filter=Location%20eq%20%27R100%27
+
+--- Rtx services
+
+http://ldcirtx.wdf.sap.corp:8003/sap/is/retail/car/int/odata/CARServices.xsodata/MaterialQuery(P_SAPClient='800')/Results?$format=json&$filter=Material%20eq%20%27CAR_TEST_1001%27&$top=10
+
+// order by : 
+
+
+http://ldcird1.wdf.sap.corp:8002/sap/is/retail/car/int/odata/CARServices.xsodata/POSSalesQuery(P_SAPClient='800')/Results?$format=json&$filter=RetailStoreID%20eq%20%27R100%27%20&$orderby=EuropeanArticleNumber%20desc&$top=10
+
+
+
+
+----------------
+http://ldcird1.wdf.sap.corp:8002/sap/is/retail/car/int/odata/CARServices.xsodata/POSSalesQuery(P_SAPClient='800')/Results?$format=json&$filter=RetailStoreID%20eq%20%27R100%27%20and%20TransactionIndex%20eq%204%20and%20BusinessDayDate%20eq%20%2720120101%27&$top=10

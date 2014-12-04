@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base>
+	<label spring-bean="changeProductPriceBundleRuleLabelProvider"/>
+	
+	<initial-properties source-object-template="BundleTemplate">
+		<property-mapping source="src.catalogVersion" target="ChangeProductPriceBundleRule.catalogVersion"/>
+		<property-mapping source="src" target="ChangeProductPriceBundleRule.bundleTemplate"/>
+	
+				
+	</initial-properties>
+	
+</base>

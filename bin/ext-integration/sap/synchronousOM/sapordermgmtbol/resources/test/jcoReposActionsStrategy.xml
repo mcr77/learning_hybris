@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FunctionRepository>
+<MetaData>
+	<RecordMetaData>
+		<MRec mFN="IS_LOGIC_SWITCH" mFT="" nucBL="300" ucBL="600">
+			<MField mFN="NO_MESSAGES_DOC" mFT="0" mRT="NO_MESSAGES_DOC" nucBL="1" ucBL="2"/>
+			<MField mFN="NO_CONVERSION" mFT="0" mRT="NO_CONVERSION" nucBL="1" ucBL="2"/>
+		</MRec>				
+	</RecordMetaData>
+</MetaData>	
+<Records>
+	<IS_LOGIC_SWITCH key="IS_LOGIC_SWITCH">
+	</IS_LOGIC_SWITCH>
+	
+</Records>
+</FunctionRepository>
+

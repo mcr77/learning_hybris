@@ -1,0 +1,9 @@
+#Ant properties
+#Tue Aug 12 18:19:37 CEST 2014
+builddate=20140812 1819
+description=reportcockpit
+name=reportcockpit
+releasedate=20140730 1849
+vendor=hybris
+version=5.3.0.0
+version.api=5.3.0

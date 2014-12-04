@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base>
+	<label spring-bean="meteredSubscriptionEntitlementLabelProvider"/>
+
+	<initial-properties source-object-template="SubscriptionProduct">
+		<property-mapping source="src.catalogVersion" target="MeteredSubscriptionEntitlement.catalogVersion"/>
+		<property-mapping source="src" target="MeteredSubscriptionEntitlement.subscriptionProduct"/>
+	</initial-properties>
+	
+</base>

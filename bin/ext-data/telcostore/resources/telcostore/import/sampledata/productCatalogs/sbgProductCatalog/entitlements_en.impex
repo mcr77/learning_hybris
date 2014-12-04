@@ -1,0 +1,18 @@
+# ImpEx for Importing Entitlement Localizations
+
+# Language
+$lang=en
+
+
+UPDATE MeteredEntitlement;id[unique=true];name[lang=$lang]
+;local_and_us_radio_stations;Local and US radio stations
+;theme_packages;Theme packages of choice
+;video_on_demand;Video on demand
+;documentary_on_demand;Documentaries on demand	
+;movie_on_demand;Movie on demand	
+;blockbuster_on_demand;Blockbuster on demand
+
+UPDATE NonMeteredEntitlement;id[unique=true];name[lang=$lang]
+;digital_hd_receiver;Digital HD-Receiver
+;digital_hd_recorder;Digital HD-Recorder
+;spotify_premium_account;Spotify Premium Account

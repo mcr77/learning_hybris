@@ -1,0 +1,8 @@
+#Ant properties
+#Thu Jul 24 14:41:58 CEST 2014
+builddate=20140724 1441
+description=dynamicwebservices
+name=dynamicwebservices
+vendor=hybris
+version=5.2.0.0
+version.api=5.2.0

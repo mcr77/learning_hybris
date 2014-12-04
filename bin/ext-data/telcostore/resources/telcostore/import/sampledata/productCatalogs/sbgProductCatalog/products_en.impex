@@ -1,0 +1,15 @@
+# ImpEx for Importing Product Localisations
+ 
+# Macros / Replacement Parameter definitions
+$productCatalog=sbgProductCatalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default=Staged])[unique=true,default=$productCatalog:Staged]
+
+# Language
+$lang=en
+
+UPDATE Product;code[unique=true];name[lang=en];description[lang=$lang];summary[lang=$lang];$catalogVersion
+;BASIC_TV;Basic TV;Local and basic US network stations<br><b>120 TV channels with 30 in HD</b><br>Free Digital HD-Receiver<br>Plus 90 radio stations;Local and basic US network stations<br><b>120 TV channels with 30 in HD</b><br>Free Digital HD-Receiver<br>Plus 90 radio stations
+;BIG_TV;Big TV;Basic TV package + 6 theme packages<br><b>Up to 240 TV channels with 70 in HD</b><br>Free Digital HD-Receiver<br>Spotify Premium Account;Basic TV package + 6 theme packages<br><b>Up to 240 TV channels with 70 in HD</b><br>Free Digital HD-Receiver<br>Spotify Premium Account
+;PREMIUM_TV;Premium TV;Basic TV package + 9 theme packages<br><b>Up to 280 TV channels with 90 in HD</b><br>Free Digital HD-Recorder<br>Spotify Premium Account<br>3 free videos per month;Basic TV package + 9 theme packages<br><b>Up to 280 TV channels with 90 in HD</b><br>Free Digital HD-Recorder<br>Spotify Premium Account<br>3 free videos per month
+;DELUXE_TV;Deluxe TV;Basic TV package + 12 theme packages<br><b>Up to 300 TV channels with 100 in HD</b><br>Free Digital HD-Recorder<br>Spotify Premium Account<br>10 free videos per month<br>Unlimited Documentaries on demand;Basic TV package + 12 theme packages<br><b>Up to 300 TV channels with 100 in HD</b><br>Free Digital HD-Recorder<br>Spotify Premium Account<br>10 free videos per month<br>Unlimited Documentaries on demand

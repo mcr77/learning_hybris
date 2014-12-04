@@ -1,0 +1,5 @@
+#parse( "impex-templates/common-macros.impex.vm" )
+#[[
+INSERT NonMeteredSubscriptionEntitlement;id[unique=true];$catalogversion;entitlement(id);subscriptionProduct(code, $catalogversionResolver);timeUnit(code);timeUnitStart;timeUnitDuration
+]]#
+;;;${entitlementId};${productCode};${timeUnit};${timeUnitStart};${timeUnitDuration}
