@@ -4201,3 +4201,29 @@ INFO   | jvm 8    | main    | 2014/12/04 19:28:32.616 | [m[0;33mWARN  [hybrisH
 INFO   | jvm 8    | main    | 2014/12/04 19:28:32.616 | [m[0;33mWARN  [hybrisHTTP1] [StructureLoader] * Type MediaContainer (Media Container): 
 INFO   | jvm 8    | main    | 2014/12/04 19:28:32.616 | [m[0;33mWARN  [hybrisHTTP1] [StructureLoader]      'catalogversion' is already used in the editor. Removing AttributeChipNode! (see knowledgebase (dev.hybris.de) for further information)
 INFO   | jvm 8    | main    | 2014/12/04 19:28:33.116 | [m
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | shutting down hybris registry..
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [0;32mINFO  [Thread-1] [TimerTaskUtils] Stopping CronJob timer ...
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [TimerTaskUtils] CronJob timer stopped
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [DefaultTaskService] Shutting down task engine for tenant master.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [DefaultTaskService] Terminating task polling thread.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [DefaultTaskService] Stopped task engine for tenant master.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [TimerTaskUtils] Stopping CronJob timer ...
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [DefaultTaskService] Shutting down task engine for tenant master.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.141 | [m[0;32mINFO  [Thread-1] [DefaultTaskService] Stopped task engine for tenant master.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;33mWARN  [AfterSaveEventPublisher-master] [DefaultAfterSaveListenerRegistry] AfterSaveEventPublisher-master has been interrupted - stopping now: sleep interrupted
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [AfterSaveEventPublisher-master] [DefaultAfterSaveListenerRegistry] AfterSaveEventPublisher-master has been interrupted/terminated but without InterruptedException - stopping now.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [Thread-1] (junit) [DefaultTaskService] Shutting down task engine for tenant junit.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [Thread-1] (junit) [DefaultTaskService] Stopped task engine for tenant junit.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [Thread-1] (junit) [DefaultTaskService] Shutting down task engine for tenant junit.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [Thread-1] (junit) [DefaultTaskService] Stopped task engine for tenant junit.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;33mWARN  [AfterSaveEventPublisher-junit] (junit) [DefaultAfterSaveListenerRegistry] AfterSaveEventPublisher-junit has been interrupted - stopping now: sleep interrupted
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.241 | [m[0;32mINFO  [AfterSaveEventPublisher-junit] (junit) [DefaultAfterSaveListenerRegistry] AfterSaveEventPublisher-junit has been interrupted/terminated but without InterruptedException - stopping now.
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.442 | [m[0;32mINFO  [Thread-1] (junit) [DefaultCacheController] Removed listener from cache controller. Currently registered 2
+INFO   | jvm 8    | main    | 2014/12/04 19:33:06.942 | [m[0;33mWARN  [Thread-1] [DefaultCacheController] Listener not un-registered (not found): RegionCacheAdapter(179094713) - <<master>> : de.hybris.platform.cache.impl.RegionCacheAdapter
+INFO   | jvm 8    | main    | 2014/12/04 19:33:07.443 | [m
+STATUS | wrapper  | main    | 2014/12/04 19:33:08.514 | TERM trapped.  Forcing immediate shutdown.
+ERROR  | wrapper  | main    | 2014/12/04 19:33:08.648 | JVM did not exit on request, termination requested.
+STATUS | wrapper  | main    | 2014/12/04 19:33:08.714 | JVM received a signal SIGKILL (9).
+STATUS | wrapper  | main    | 2014/12/04 19:33:08.714 | JVM process is gone.
+STATUS | wrapper  | main    | 2014/12/04 19:33:08.714 | JVM exited after being requested to terminate.
+STATUS | wrapper  | main    | 2014/12/04 19:33:09.015 | <-- Wrapper Stopped

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Dec 2, 2014 7:25:09 PM                      ---
+ * --- Generated at Dec 5, 2014 7:51:06 PM                      ---
  * ----------------------------------------------------------------
  *  
  * [y] hybris Platform
@@ -55,8 +55,8 @@ public class GeneratedCuppyConstants
 	{
 		public static class CompetitionType
 		{
-			public static final String LEAGUE = "league".intern();
 			public static final String TOURNAMENT = "tournament".intern();
+			public static final String LEAGUE = "league".intern();
 		}
 	}
 	public static class Relations

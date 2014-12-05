@@ -1,0 +1,16 @@
+INSERT_UPDATE Stadium; code[unique=true];capacity
+;Emirates;100000
+;DonbasArena;70000
+
+UPDATE Match;id[unique=true];group(competition(code),code)
+[unique=true];stadium(code)
+;1;wc2010:A;Emirates
+;2;wc2010:A;Emirates
+;2;wc2010:B;Emirates
+;3;wc2010:B;DonbasArena
+
+$START_USERRIGHTS
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;cuppyAdmins;;;;;;;;
+;;;;Stadium;+;+;+;+;-
+$END_USERRIGHTS
