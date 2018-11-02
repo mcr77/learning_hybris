@@ -1,3 +1,12 @@
 component_depth: 5
 languages:
 - java
+exclude:
+- /.idea/.*
+- /config/.*
+- /data/.*
+- /log/.*
+- /sampleconfigurations/.*
+- /bin/ext-.*
+- /bin/custom/.*
+
