@@ -7,7 +7,6 @@ exclude:
 - /data/.*
 - /log/.*
 - /sampleconfigurations/.*
-- /bin/custom/.*
 - /bin/ext-accelerator/.*
 - /bin/ext-addon/.*
 - /bin/ext-atdd/.*
@@ -24,3 +23,4 @@ exclude:
 - /bin/ext-supportability/hybrisdatasupplier/.*
 - /bin/ext-template/.*
 - /bin/platform/.*
+- /bin/ext-commerce/.*
