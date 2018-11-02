@@ -7,6 +7,4 @@ exclude:
 - /data/.*
 - /log/.*
 - /sampleconfigurations/.*
-- /bin/ext-.*
-- /bin/custom/.*
-
+- /bin/(?!ext-commerce).*/.*
