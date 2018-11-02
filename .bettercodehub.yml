@@ -1,26 +1,5 @@
 component_depth: 5
 languages:
 - java
-exclude:
-- /.idea/.*
-- /config/.*
-- /data/.*
-- /log/.*
-- /sampleconfigurations/.*
-- /bin/ext-accelerator/.*
-- /bin/ext-addon/.*
-- /bin/ext-atdd/.*
-- /bin/ext-atddtests/.*
-- /bin/ext-backoffice/.*
-- /bin/ext-channel/.*
-- /bin/ext-cockpit/.*
-- /bin/ext-content/.*
-- /bin/ext-data/.*
-- /bin/ext-deprecated/cybersource/.*
-- /bin/ext-integration/.*
-- /bin/ext-platform-optional/.*
-- /bin/ext-print/.*
-- /bin/ext-supportability/hybrisdatasupplier/.*
-- /bin/ext-template/.*
-- /bin/platform/.*
-- /bin/ext-commerce/.*
+include:
+- /bin/custom/.*
